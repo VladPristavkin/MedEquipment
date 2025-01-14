@@ -38,7 +38,7 @@
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridView1 = new DataGridView();
-            Name = new DataGridViewTextBoxColumn();
+            DataGridView1Name = new DataGridViewTextBoxColumn();
             Model = new DataGridViewTextBoxColumn();
             SerialNumber = new DataGridViewTextBoxColumn();
             LastServiceDate = new DataGridViewTextBoxColumn();
@@ -80,7 +80,6 @@
             label1.Size = new Size(290, 25);
             label1.TabIndex = 0;
             label1.Text = "Добро пожаловать, {FullName}! ";
-            label1.Click += label1_Click;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -114,7 +113,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, Model, SerialNumber, LastServiceDate, statusDataGridViewTextBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DataGridView1Name, Model, SerialNumber, LastServiceDate, statusDataGridViewTextBoxColumn });
             dataGridView1.DataSource = repairRequestBindingSource;
             dataGridView1.Location = new Point(185, 170);
             dataGridView1.Name = "dataGridView1";
@@ -130,12 +129,11 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(985, 169);
             dataGridView1.TabIndex = 1;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick_3;
             // 
             // Name
             // 
-            Name.HeaderText = "Name";
-            Name.Name = "Name";
+            DataGridView1Name.HeaderText = "Name";
+            DataGridView1Name.Name = "Name";
             // 
             // Model
             // 
@@ -198,7 +196,6 @@
             label2.Size = new Size(210, 21);
             label2.TabIndex = 4;
             label2.Text = "Активные заявки на ремонт";
-            label2.Click += label2_Click;
             // 
             // button3
             // 
@@ -250,7 +247,6 @@
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.Size = new Size(981, 145);
             dataGridView2.TabIndex = 7;
-            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
             // RepairName
             // 
@@ -322,7 +318,6 @@
             label3.Size = new Size(149, 21);
             label3.TabIndex = 8;
             label3.Text = "Мое оборудование";
-            label3.Click += label3_Click;
             // 
             // Column1
             // 
@@ -370,6 +365,7 @@
             Controls.Add(button3);
             Controls.Add(label1);
             Controls.Add(button4);
+            Name = "DoctorForm";
             Text = "DoctorForm";
             Load += DoctorForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -402,7 +398,7 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn DataGridView1Name;
         private DataGridViewTextBoxColumn Model;
         private DataGridViewTextBoxColumn SerialNumber;
         private DataGridViewTextBoxColumn LastServiceDate;

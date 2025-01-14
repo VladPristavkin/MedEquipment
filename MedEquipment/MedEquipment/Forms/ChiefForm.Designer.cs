@@ -34,7 +34,7 @@
             label1 = new Label();
             label3 = new Label();
             dataGridView1 = new DataGridView();
-            Name = new DataGridViewTextBoxColumn();
+            DataGridView1Name = new DataGridViewTextBoxColumn();
             Department = new DataGridViewTextBoxColumn();
             JobTitle = new DataGridViewTextBoxColumn();
             Equipment = new DataGridViewTextBoxColumn();
@@ -74,7 +74,6 @@
             label1.Size = new Size(290, 25);
             label1.TabIndex = 1;
             label1.Text = "Добро пожаловать, {FullName}! ";
-            label1.Click += label1_Click;
             // 
             // label3
             // 
@@ -86,7 +85,6 @@
             label3.Size = new Size(79, 21);
             label3.TabIndex = 16;
             label3.Text = "Персонал";
-            label3.Click += label3_Click;
             // 
             // dataGridView1
             // 
@@ -103,7 +101,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, Department, JobTitle, Equipment });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DataGridView1Name, Department, JobTitle, Equipment });
             dataGridView1.Location = new Point(160, 144);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -117,12 +115,11 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(985, 169);
             dataGridView1.TabIndex = 9;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Name
             // 
-            Name.HeaderText = "Name";
-            Name.Name = "Name";
+            DataGridView1Name.HeaderText = "Name";
+            DataGridView1Name.Name = "Name";
             // 
             // Department
             // 
@@ -200,6 +197,7 @@
             button7.TabIndex = 19;
             button7.Text = "Удалить сотрудника";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // button8
             // 
@@ -235,7 +233,6 @@
             dataGridView2.RowHeadersVisible = false;
             dataGridView2.Size = new Size(537, 145);
             dataGridView2.TabIndex = 15;
-            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
             // Dep
             // 
@@ -254,97 +251,93 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top;
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
-            panel1.Location = new Point(763, 440);
+            panel1.Location = new Point(765, 440);
             panel1.Name = "panel1";
-            panel1.Size = new Size(164, 66);
+            panel1.Size = new Size(170, 70);
             panel1.TabIndex = 21;
-            panel1.Paint += panel1_Paint_1;
             // 
             // label5
             // 
-            label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(20, 34);
+            label5.Location = new Point(21, 34);
             label5.Name = "label5";
             label5.Size = new Size(127, 21);
             label5.TabIndex = 1;
             label5.Text = "{TotalEquipment}";
-            label5.Click += label5_Click;
+            label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(4, 0);
+            label4.Location = new Point(10, 0);
             label4.Name = "label4";
             label4.Size = new Size(157, 21);
             label4.TabIndex = 0;
             label4.Text = "Всего оборудования";
-            label4.Click += label4_Click;
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top;
             panel2.Controls.Add(label6);
             panel2.Controls.Add(label7);
-            panel2.Location = new Point(1027, 440);
+            panel2.Location = new Point(1016, 440);
             panel2.Name = "panel2";
-            panel2.Size = new Size(164, 66);
+            panel2.Size = new Size(170, 69);
             panel2.TabIndex = 22;
             // 
             // label6
             // 
-            label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(20, 34);
+            label6.Location = new Point(31, 34);
             label6.Name = "label6";
             label6.Size = new Size(114, 21);
             label6.TabIndex = 1;
             label6.Text = "{ActiveRepairs}";
-            label6.Click += label6_Click;
+            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F);
-            label7.Location = new Point(3, 0);
+            label7.Location = new Point(11, 0);
             label7.Name = "label7";
             label7.Size = new Size(148, 21);
             label7.TabIndex = 0;
             label7.Text = "Активные ремонты";
-            label7.Click += label7_Click;
             // 
             // panel3
             // 
+            panel3.Anchor = AnchorStyles.Top;
             panel3.Controls.Add(label8);
             panel3.Controls.Add(label9);
-            panel3.Location = new Point(872, 531);
+            panel3.Location = new Point(882, 515);
             panel3.Name = "panel3";
-            panel3.Size = new Size(186, 66);
+            panel3.Size = new Size(190, 70);
             panel3.TabIndex = 23;
             // 
             // label8
             // 
-            label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F);
-            label8.Location = new Point(20, 33);
+            label8.Location = new Point(22, 33);
             label8.Name = "label8";
             label8.Size = new Size(148, 21);
             label8.TabIndex = 1;
             label8.Text = "{CompletedRepairs}";
-            label8.Click += label8_Click;
+            label8.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F);
-            label9.Location = new Point(3, 0);
+            label9.Location = new Point(9, 0);
             label9.Name = "label9";
             label9.Size = new Size(178, 21);
             label9.TabIndex = 0;
             label9.Text = "Завершенные ремонты";
-            label9.Click += label9_Click;
             // 
             // ChiefForm
             // 
@@ -364,6 +357,7 @@
             Controls.Add(label2);
             Controls.Add(button3);
             Controls.Add(label1);
+            Name = "ChiefForm";
             Text = "ChiefForm";
             Load += ChiefForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -389,7 +383,7 @@
         private Button button6;
         private Button button7;
         private Button button8;
-        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn DataGridView1Name;
         private DataGridViewTextBoxColumn Department;
         private DataGridViewTextBoxColumn JobTitle;
         private DataGridViewTextBoxColumn Equipment;

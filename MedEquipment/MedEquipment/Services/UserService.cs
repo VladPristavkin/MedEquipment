@@ -51,8 +51,22 @@ namespace MedEquipment.Services
 
         public void UpdateUser(User user)
         {
-            _dbContext.Users.Update(user);
-            _dbContext.SaveChanges();
+            if (user != null)
+            {
+                _dbContext.Users.Update(user);
+                _dbContext.SaveChanges();
+            }
+        }
+
+        public void DeleteUser(int userId)
+        {
+            var user = _dbContext.Users.Where(x => x.Id == userId).SingleOrDefault();
+
+            if (user != null)
+            {
+                _dbContext.Users.Remove(user);
+                _dbContext.SaveChanges();
+            }
         }
     }
 }

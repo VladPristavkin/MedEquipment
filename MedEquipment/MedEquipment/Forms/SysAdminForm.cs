@@ -9,8 +9,8 @@ namespace MedEquipment.Forms
         private readonly RepairRequestService _repairRequestService;
         private readonly EquipmentService _equipmentService;
         private readonly User _user;
-        private string? _equipmentId;
-        private string? _repairId;
+        private int? _equipmentId;
+        private int? _repairId;
 
         public SysAdminForm(User user)
         {
@@ -24,68 +24,33 @@ namespace MedEquipment.Forms
             label1.Text = label1.Text.Replace("{FullName}", user.FullName);
             label1.Location = new Point((Size.Width - label1.Width) / 2, label1.Location.Y);
 
-            dataGridView2.Columns.Add("Id", "Id");
-            dataGridView2.Columns["Id"].Visible = false;
-
-            dataGridView2.CellClick += (s, e) =>
-            {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow selectedRow = dataGridView2.Rows[e.RowIndex];
-
-                    _equipmentId = dataGridView2.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-
-                    dataGridView2.Rows[e.RowIndex].Selected = true;
-                }
-                else
-                {
-                    _equipmentId = null;
-                }
-            };
-
-            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.MultiSelect = false;
-            dataGridView2.ClearSelection();
-
-
-            dataGridView1.Columns.Add("Id", "Id");
-            dataGridView1.Columns["Id"].Visible = false;
-
-            dataGridView1.CellClick += (s, e) =>
-            {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-
-                    _repairId = dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-
-                    dataGridView1.Rows[e.RowIndex].Selected = true;
-                }
-                else
-                {
-                    _repairId = null;
-                }
-            };
-
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
-            dataGridView1.ClearSelection();
-
             Click += (s, e) =>
             {
-                dataGridView1.ClearSelection();
-                dataGridView2.ClearSelection();
+                ClearSelectionDataGridViews();
                 _repairId = null;
                 _equipmentId = null;
             };
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void SysAdminForm_Load(object sender, EventArgs e)
         {
-
+            ConfigureDataGridViews();
+            RefreshInformation();
         }
 
-        private void LoadRequests()
+        private void RefreshInformation()
+        {
+            FillDataGrid();
+            ClearSelectionDataGridViews();
+        }
+
+        private void ClearSelectionDataGridViews()
+        {
+            dataGridView1.ClearSelection();
+            dataGridView2.ClearSelection();
+        }
+
+        private void FillDataGrid()
         {
             var requests = _repairRequestService.GetAllRequests();
             var equipments = _equipmentService.GetAllEquipment();
@@ -115,34 +80,64 @@ namespace MedEquipment.Forms
             };
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void ConfigureDataGridViews()
         {
+            dataGridView2.Columns.Add("Id", "Id");
+            dataGridView2.Columns["Id"].Visible = false;
 
-        }
+            dataGridView2.CellClick += (s, e) =>
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView2.Rows[e.RowIndex];
 
-        private void label2_Click_1(object sender, EventArgs e)
-        {
+                    _equipmentId = (int)dataGridView2.Rows[e.RowIndex].Cells["Id"].Value;
 
-        }
+                    dataGridView2.Rows[e.RowIndex].Selected = true;
+                }
+                else
+                {
+                    _equipmentId = null;
+                }
+            };
 
-        private void SysAdminForm_Load(object sender, EventArgs e)
-        {
-            LoadRequests();
-        }
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.MultiSelect = false;
+            dataGridView2.ClearSelection();
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+            dataGridView1.Columns.Add("Id", "Id");
+            dataGridView1.Columns["Id"].Visible = false;
+
+            dataGridView1.CellClick += (s, e) =>
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
+
+                    _repairId = (int)dataGridView1.Rows[e.RowIndex].Cells["Id"].Value;
+
+                    dataGridView1.Rows[e.RowIndex].Selected = true;
+                }
+                else
+                {
+                    _repairId = null;
+                }
+            };
+
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.ClearSelection();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             if (_repairId != null)
             {
-                var request = _repairRequestService.GetRequest(_repairId);
+                var request = _repairRequestService.GetRequest(_repairId.Value);
                 RepairRequestProcessingForm createRequestForm = new RepairRequestProcessingForm(request);
                 createRequestForm.ShowDialog();
-                LoadRequests();
+                RefreshInformation();
             }
             else
             {
@@ -154,7 +149,7 @@ namespace MedEquipment.Forms
         {
             EquipmentForm equipmentForm = new EquipmentForm();
             equipmentForm.ShowDialog();
-            LoadRequests();
+            RefreshInformation();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -167,19 +162,14 @@ namespace MedEquipment.Forms
             ExcelReport.CreateReport(dataGridView1, _user.FullName + "\\Управление оборудованием");
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
             if (_equipmentId != null)
             {
-                var equipment = _equipmentService.GetEquipment(_equipmentId);
+                var equipment = _equipmentService.GetEquipment(_equipmentId.Value);
                 EquipmentForm equipmentForm = new EquipmentForm(equipment);
                 equipmentForm.ShowDialog();
-                LoadRequests();
+                RefreshInformation();
             }
             else
             {
@@ -194,9 +184,11 @@ namespace MedEquipment.Forms
                 if (MessageBox.Show(this, "Вы уверены, что хотите удалить это оборудование?", "Подтверждение удаления",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    _equipmentService.DeleteEquipment(_equipmentId);
+                    _equipmentService.DeleteEquipment(_equipmentId.Value);
                     MessageBox.Show(this, "Оборудование успешно удалено", "Удаление завершено", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+                RefreshInformation();
             }
             else
             {

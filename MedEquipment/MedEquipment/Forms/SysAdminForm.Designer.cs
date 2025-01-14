@@ -40,7 +40,7 @@
             AssignedTo = new DataGridViewTextBoxColumn();
             EquipmentStatus = new DataGridViewTextBoxColumn();
             dataGridView1 = new DataGridView();
-            Name = new DataGridViewTextBoxColumn();
+            DataGridView1Name = new DataGridViewTextBoxColumn();
             Model = new DataGridViewTextBoxColumn();
             SerialNumber = new DataGridViewTextBoxColumn();
             Applicant = new DataGridViewTextBoxColumn();
@@ -78,7 +78,6 @@
             label3.Size = new Size(138, 21);
             label3.TabIndex = 16;
             label3.Text = "Заявки на ремонт";
-            label3.Click += label3_Click;
             // 
             // dataGridView2
             // 
@@ -101,7 +100,6 @@
             dataGridView2.RowHeadersVisible = false;
             dataGridView2.Size = new Size(981, 145);
             dataGridView2.TabIndex = 15;
-            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
             // RepairName
             // 
@@ -144,7 +142,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Name, Model, SerialNumber, Applicant, CreatedDate, Status });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DataGridView1Name, Model, SerialNumber, Applicant, CreatedDate, Status });
             dataGridView1.Location = new Point(170, 150);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -158,12 +156,11 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(985, 169);
             dataGridView1.TabIndex = 9;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Name
             // 
-            Name.HeaderText = "Name";
-            Name.Name = "Name";
+            DataGridView1Name.HeaderText = "Name";
+            DataGridView1Name.Name = "Name";
             // 
             // Model
             // 
@@ -213,7 +210,6 @@
             label2.Size = new Size(214, 21);
             label2.TabIndex = 12;
             label2.Text = "Управление оборудованием";
-            label2.Click += label2_Click_1;
             // 
             // button3
             // 
@@ -296,6 +292,7 @@
             Controls.Add(button3);
             Controls.Add(button4);
             Controls.Add(label1);
+            Name = "SysAdminForm";
             Text = "SysAdminForm";
             Load += SysAdminForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
@@ -314,7 +311,7 @@
         private Label label2;
         private Button button3;
         private Button button4;
-        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn DataGridView1Name;
         private DataGridViewTextBoxColumn Model;
         private DataGridViewTextBoxColumn SerialNumber;
         private DataGridViewTextBoxColumn Applicant;

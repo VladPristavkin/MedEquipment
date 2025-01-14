@@ -30,11 +30,6 @@ namespace MedEquipment.Forms
             comboBox1.SelectedValue = request?.Status ?? RequestStatus.Open;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             _repairRequestService.UpdateRequestStatus(_repairRequest.Id, Enum.Parse<RequestStatus>(comboBox1.Text));
@@ -47,31 +42,6 @@ namespace MedEquipment.Forms
         {
             DialogResult = DialogResult.Cancel;
             Close();
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RepairRequestProcessingForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

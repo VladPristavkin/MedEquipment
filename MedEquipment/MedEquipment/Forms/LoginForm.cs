@@ -50,7 +50,7 @@ namespace MedEquipment.Forms
             }
             else
             {
-                MessageBox.Show(this, "This user is not registered", "Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "Этот пользователь не зарегистрирован", "Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

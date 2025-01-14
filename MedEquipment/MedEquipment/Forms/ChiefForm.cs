@@ -10,7 +10,7 @@ namespace MedEquipment.Forms
         private readonly EquipmentService _equipmentService;
         private readonly UserService _userService;
         private readonly User _user;
-        private string? _userId;
+        private int? _userId;
 
         public ChiefForm(User user)
         {
@@ -22,80 +22,40 @@ namespace MedEquipment.Forms
             _equipmentService = new EquipmentService();
             _userService = new UserService();
 
-            label5.Text = _userService.GetAllUsers().Sum(x => x.Equipments.Count).ToString();
-            label6.Text = _userService.GetAllUsers()
-                .Sum(user => user.RepairRequests
-                    .Count(request => request.Status == RequestStatus.InProgress || request.Status == RequestStatus.Open))
-                .ToString();
-            label8.Text = _userService.GetAllUsers()
-                .Sum(user => user.RepairRequests
-                    .Count(request => request.Status == RequestStatus.Done))
-                .ToString();
-
             label1.Text = label1.Text.Replace("{FullName}", user.FullName);
             label1.Location = new Point((Size.Width - label1.Width) / 2, label1.Location.Y);
 
-            dataGridView1.Columns.Add("Id", "Id");
-            dataGridView1.Columns["Id"].Visible = false;
-
-            dataGridView1.CellClick += (s, e) =>
-            {
-                if (e.RowIndex >= 0)
-                {
-                    DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
-
-                    _userId = dataGridView1.Rows[e.RowIndex].Cells["Id"].Value.ToString();
-
-                    dataGridView1.Rows[e.RowIndex].Selected = true;
-                }
-                else
-                {
-                    _userId = null;
-                }
-            };
-
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
-            dataGridView1.ClearSelection();
-
-
-            dataGridView2.CellClick += (s, e) =>
-            {
-                if (e.RowIndex >= 0)
-                {
-
-                    dataGridView2.Rows[e.RowIndex].Selected = true;
-                }
-            };
-
-            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView2.MultiSelect = false;
-            dataGridView2.ClearSelection();
-
             Click += (s, e) =>
             {
-                dataGridView1.ClearSelection();
-                dataGridView2.ClearSelection();
+                ClearSelectionDataGridViews();
                 _userId = null;
             };
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void ChiefForm_Load(object sender, EventArgs e)
         {
-            LoadRequests();
+            ConfigureDataGridViews();
+            RefreshInformation();
         }
 
-        private void LoadRequests()
+        private void InitializeLabels()
+        {
+            var allUsers = _userService.GetAllUsers();
+
+            label5.Text = allUsers.Sum(user => user.Equipments.Count).ToString();
+            label6.Text = allUsers.Sum(user => user.RepairRequests
+                .Count(request => request.Status is RequestStatus.InProgress or RequestStatus.Open)).ToString();
+            label8.Text = allUsers.Sum(user => user.RepairRequests
+                .Count(request => request.Status == RequestStatus.Done)).ToString();
+        }
+
+        private void ClearSelectionDataGridViews()
+        {
+            dataGridView1.ClearSelection();
+            dataGridView2.ClearSelection();
+        }
+
+        private void FillDataGrid()
         {
             var users = _userService.GetAllUsers();
 
@@ -130,97 +90,103 @@ namespace MedEquipment.Forms
             };
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void ConfigureDataGridViews()
         {
+            dataGridView1.Columns.Add("Id", "Id");
+            dataGridView1.Columns["Id"].Visible = false;
 
-        }
+            dataGridView1.CellClick += (s, e) =>
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+                    _userId = (int)dataGridView1.Rows[e.RowIndex].Cells["Id"].Value;
 
-        }
+                    dataGridView1.Rows[e.RowIndex].Selected = true;
+                }
+                else
+                {
+                    _userId = null;
+                }
+            };
 
-        private void label3_Click(object sender, EventArgs e)
-        {
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.ClearSelection();
 
-        }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
+            dataGridView2.CellClick += (s, e) =>
+            {
+                if (e.RowIndex >= 0)
+                {
+                    dataGridView2.Rows[e.RowIndex].Selected = true;
+                }
+            };
 
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.MultiSelect = false;
+            dataGridView2.ClearSelection();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            ExcelReport.CreateReport(dataGridView1, _user.FullName + "\\Персонал");
+            ExcelReport.CreateReport(dataGridView1, "Персонал");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ExcelReport.CreateReport(dataGridView1, _user.FullName + "\\Общая статистика");
-        }
-
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            ExcelReport.CreateReport(dataGridView1, "Общая статистика");
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            NewClientForm newClientForm = new NewClientForm();
+            NewClientForm newClientForm = new NewClientForm(null);
             newClientForm.ShowDialog();
-            LoadRequests();
+
+            RefreshInformation();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             if (_userId != null)
             {
-                var user= _userService.GetUser(_userId);
+                var user = _userService.GetUser(_userId.Value);
+                var newClientForm = new NewClientForm(user);
+                newClientForm.ShowDialog();
 
-                NewClientForm newClientForm = new NewClientForm();
-                updateRequestForm.ShowDialog();
-                LoadRequests();
+                RefreshInformation();
             }
             else
             {
-                MessageBox.Show(this, "Выберите заявку", "Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "Выберите сотрудника", "Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (_userId != null)
+            {
+                if (MessageBox.Show(this, "Вы уверены, что хотите удалить этого сотрудника?", "Подтверждение удаления",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _userService.DeleteUser(_userId.Value);
+                    MessageBox.Show(this, "Сотрудник успешно удален", "Удаление завершено", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                RefreshInformation();
+            }
+            else
+            {
+                MessageBox.Show(this, "Выберите сотрудника", "Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void RefreshInformation()
+        {
+            InitializeLabels();
+            FillDataGrid();
+            ClearSelectionDataGridViews();
         }
     }
 }

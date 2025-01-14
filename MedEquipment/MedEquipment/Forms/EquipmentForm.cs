@@ -8,9 +8,9 @@ namespace MedEquipment.Forms
 {
     public partial class EquipmentForm : Form
     {
-            private readonly EquipmentService _equipmentService;
-            private readonly UserService _userService;
-            private Equipment? _equipment;
+        private readonly EquipmentService _equipmentService;
+        private readonly UserService _userService;
+        private Equipment? _equipment;
 
         public EquipmentForm()
         {
@@ -67,7 +67,7 @@ namespace MedEquipment.Forms
         {
             if (_equipment != null)
             {
-                var equipment = _equipmentService.GetEquipment(_equipment.Id.ToString());
+                var equipment = _equipmentService.GetEquipment(_equipment.Id);
 
                 equipment = new Equipment()
                 {
@@ -77,7 +77,6 @@ namespace MedEquipment.Forms
                     SerialNumber = textBox4.Text,
                     LastServiceDate = DateOnly.FromDateTime(dateTimePicker1.Value),
                     EquipmentStatus = equipment.EquipmentStatus,
-                    User = equipment.User,
                     UserId = equipment.UserId
                 };
 
@@ -92,7 +91,6 @@ namespace MedEquipment.Forms
                     SerialNumber = textBox4.Text,
                     LastServiceDate = DateOnly.FromDateTime(dateTimePicker1.Value),
                     EquipmentStatus = EquipmentStatus.Active,
-                    User = _userService.GetAllUsers().Where(x => x.Id.ToString() == comboBox1.SelectedValue.ToString()).SingleOrDefault(),
                     UserId = int.Parse(comboBox1.SelectedValue.ToString())
                 };
 

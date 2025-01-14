@@ -78,7 +78,6 @@
             label1.TabIndex = 9;
             label1.Text = "Регистрация нового пользователя";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            label1.Click += label1_Click;
             // 
             // textBox2
             // 
@@ -87,7 +86,6 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(230, 23);
             textBox2.TabIndex = 8;
-            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // LoginButton
             // 
@@ -110,7 +108,6 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(230, 23);
             textBox1.TabIndex = 6;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
@@ -143,7 +140,6 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(230, 23);
             textBox3.TabIndex = 13;
-            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // textBox4
             // 
@@ -152,7 +148,6 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(230, 23);
             textBox4.TabIndex = 12;
-            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // label6
             // 
@@ -187,7 +182,6 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(230, 23);
             comboBox1.TabIndex = 18;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // NewClientForm
             // 

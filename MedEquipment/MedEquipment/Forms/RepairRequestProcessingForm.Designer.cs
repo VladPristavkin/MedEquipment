@@ -61,7 +61,6 @@
             label2.Size = new Size(170, 21);
             label2.TabIndex = 3;
             label2.Text = "Информация о заявке";
-            label2.Click += label2_Click;
             // 
             // label3
             // 
@@ -73,7 +72,6 @@
             label3.Size = new Size(134, 21);
             label3.TabIndex = 4;
             label3.Text = "Оборудование: {}";
-            label3.Click += label3_Click;
             // 
             // label4
             // 
@@ -85,7 +83,6 @@
             label4.Size = new Size(100, 21);
             label4.TabIndex = 5;
             label4.Text = "Заявитель: {}";
-            label4.Click += label4_Click;
             // 
             // label5
             // 
@@ -108,7 +105,6 @@
             label6.Size = new Size(131, 21);
             label6.TabIndex = 7;
             label6.Text = "Дата создания: {}";
-            label6.Click += label6_Click;
             // 
             // label7
             // 
@@ -128,7 +124,6 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 9;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // button2
             // 
@@ -173,7 +168,6 @@
             Controls.Add(label1);
             Name = "RepairRequestProcessingForm";
             Text = "RepairRequestProcessingForm";
-            Load += RepairRequestProcessingForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

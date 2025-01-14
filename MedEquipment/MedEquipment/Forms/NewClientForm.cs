@@ -11,12 +11,6 @@ namespace MedEquipment.Forms
         private readonly UserService _userService;
         private User? _user;
 
-        public NewClientForm()
-        {
-            InitializeComponent();
-            _userService = new UserService();
-        }
-
         public NewClientForm(User user)
         {
             InitializeComponent();
@@ -40,36 +34,18 @@ namespace MedEquipment.Forms
 
                 comboBox1.SelectedValue = _user?.Role ?? Role.Doctor;
             }
-        }
+            else
+            {
+                comboBox1.DataSource = Enum.GetValues(typeof(Role))
+                 .Cast<Role>()
+                 .Select(role => new { Value = role, Display = role.ToString() })
+                 .ToList();
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+                comboBox1.DisplayMember = "Display";
+                comboBox1.ValueMember = "Value";
 
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void NewClientForm_Load(object sender, EventArgs e)
-        {
-
+                comboBox1.SelectedValue = Role.Doctor;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -90,7 +66,7 @@ namespace MedEquipment.Forms
                     FullName = textBox4.Text,
                     Department = textBox3.Text,
                     Login = HashHelper.HashString(textBox1.Text),
-                    Password= HashHelper.HashString(textBox2.Text),
+                    Password = HashHelper.HashString(textBox2.Text),
                     Role = Enum.Parse<Role>(comboBox1.Text)
                 };
 
@@ -114,7 +90,7 @@ namespace MedEquipment.Forms
             Close();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void NewClientForm_Load(object sender, EventArgs e)
         {
 
         }

@@ -1,6 +1,7 @@
 ﻿using MedEquipment.Data;
 using MedEquipment.Models;
 using Microsoft.EntityFrameworkCore;
+using Npgsql.TypeMapping;
 
 namespace MedEquipment.Services
 {
@@ -18,7 +19,7 @@ namespace MedEquipment.Services
             return _dbContext.Equipment
                 .Include(x => x.User)
                 .Where(x => x.UserId == userId)
-                 .AsNoTracking()
+                .AsNoTracking()
                 .ToList();
         }
 
@@ -26,15 +27,15 @@ namespace MedEquipment.Services
         {
             return _dbContext.Equipment
                 .Include(x => x.User)
-                 .AsNoTracking()
+                .AsNoTracking()
                 .ToList();
         }
 
-        public Equipment GetEquipment(string equipmentId)
+        public Equipment GetEquipment(int equipmentId)
         {
             return _dbContext.Equipment
                 .Include(x => x.User)
-                .Where(x=>x.Id.ToString() == equipmentId)
+                .Where(x => x.Id == equipmentId)
                 .AsNoTracking()
                 .SingleOrDefault();
         }
@@ -45,25 +46,23 @@ namespace MedEquipment.Services
             _dbContext.SaveChanges();
         }
 
-        public void AssignToUser(int equipmentId, int userId)
+        public int CountOfRepairRequest(int equipmentId)
         {
-            var equipment = _dbContext.Equipment.Find(equipmentId);
-            if (equipment != null)
-            {
-                equipment.UserId = userId;
-                _dbContext.SaveChanges();
-            }
+            return _dbContext.RepairRequests.Where(x => x.EquipmentId == equipmentId).Count();
         }
 
         public void UpdateEquipment(Equipment equipment)
         {
-            _dbContext.Equipment.Update(equipment);
-            _dbContext.SaveChanges();
+            if (equipment != null)
+            {
+                _dbContext.Equipment.Update(equipment);
+                _dbContext.SaveChanges();
+            }
         }
 
-        public void DeleteEquipment(string equipmentId)
+        public void DeleteEquipment(int equipmentId)
         {
-            var equipment = _dbContext.Equipment.Find(equipmentId);
+            var equipment = _dbContext.Equipment.Where(x => x.Id == equipmentId).SingleOrDefault();
 
             if (equipment != null)
             {

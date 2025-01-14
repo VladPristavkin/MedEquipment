@@ -19,7 +19,7 @@ namespace MedEquipment.Services
                 .Include(x => x.User)
                 .Include(x => x.Equipment)
                 .Where(x => x.UserId == userId)
-                 .AsNoTracking()
+                .AsNoTracking()
                 .ToList();
         }
 
@@ -28,17 +28,17 @@ namespace MedEquipment.Services
             return _dbContext.RepairRequests
                 .Include(x => x.User)
                 .Include(x => x.Equipment)
-                 .AsNoTracking()
+                .AsNoTracking()
                 .ToList();
         }
 
-        public RepairRequest GetRequest(string requestId)
+        public RepairRequest GetRequest(int requestId)
         {
             return _dbContext.RepairRequests
                 .Include(x => x.User)
                 .Include(x => x.Equipment)
-                .Where(x => x.Id.ToString() == requestId)
-                 .AsNoTracking()
+                .Where(x => x.Id == requestId)
+                .AsNoTracking()
                 .SingleOrDefault();
         }
 
@@ -46,53 +46,62 @@ namespace MedEquipment.Services
         public void AddRequest(RepairRequest repairRequest)
         {
             repairRequest.CreatedDate = DateOnly.FromDateTime(DateTime.Now);
+
+            var equipment = _dbContext.Equipment.FirstOrDefault(e => e.Id == repairRequest.EquipmentId);
+
             _dbContext.RepairRequests.Add(repairRequest);
+
+            equipment.EquipmentStatus = EquipmentStatus.Repaired;
+
             _dbContext.SaveChanges();
         }
 
         public void UpdateRequestStatus(int requestId, RequestStatus status)
         {
-            var request = _dbContext.RepairRequests.Where(x=>x.Id == requestId).SingleOrDefault();
+            var request = _dbContext.RepairRequests.Where(x => x.Id == requestId).SingleOrDefault();
             if (request != null)
             {
                 request.Status = status;
-                _dbContext.SaveChanges();
-            }
-        }
 
-        public void UpdateRequest(string requestId, string? description, string? equipmentId)
-        {
-            var request = _dbContext.RepairRequests.Find(requestId);
-
-            if (request != null)
-            {
-                if (description != null)
+                if (request.Status == RequestStatus.Done)
                 {
-                    request.Description = description;
-                }
+                    var equipment = _dbContext.Equipment.FirstOrDefault(e => e.Id == request.EquipmentId);
 
-                if (equipmentId != null)
-                {
-                    var equipment = _dbContext.Equipment.Find(equipmentId);
+                    equipment.EquipmentStatus = EquipmentStatus.Active;
 
-                    if (equipment != null)
-                    {
-                        request.Equipment = equipment;
-                        request.EquipmentId = int.Parse(equipmentId);
-                    }
+                    _dbContext.RepairRequests.Remove(request);
                 }
 
                 _dbContext.SaveChanges();
             }
         }
 
-        public void DelereRequest(string requestId)
+        public void UpdateRequest(RepairRequest repairRequest)
         {
-            var request = _dbContext.RepairRequests.Find(requestId);
+            if (repairRequest != null)
+            {
+                var equipment = _dbContext.Equipment.FirstOrDefault(e => e.Id == repairRequest.EquipmentId);
+
+                equipment.EquipmentStatus = EquipmentStatus.Active;
+
+                _dbContext.RepairRequests.Update(repairRequest);
+
+                _dbContext.SaveChanges();
+            }
+        }
+
+        public void DeleteRequest(int requestId)
+        {
+            var request = _dbContext.RepairRequests.Where(x => x.Id == requestId).SingleOrDefault();
 
             if (request != null)
             {
+                var equipment = _dbContext.Equipment.FirstOrDefault(e => e.Id == request.EquipmentId);
+
+                equipment.EquipmentStatus = EquipmentStatus.Active;
+
                 _dbContext.RepairRequests.Remove(request);
+
                 _dbContext.SaveChanges();
             }
         }
