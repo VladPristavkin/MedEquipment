@@ -6,6 +6,8 @@
         public string Name { get; set; }
         public string Model { get; set; }
         public string SerialNumber { get; set; }
+        public DateOnly LastServiceDate {  get; set; }
+        public EquipmentStatus EquipmentStatus { get; set; }
         public int? UserId { get; set; }
         public User? User { get; set; }
     }

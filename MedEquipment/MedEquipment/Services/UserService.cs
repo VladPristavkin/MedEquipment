@@ -1,6 +1,7 @@
 ﻿using MedEquipment.Data;
 using MedEquipment.Models;
 using MedEquipment.Utils;
+using Microsoft.EntityFrameworkCore;
 
 namespace MedEquipment.Services
 {
@@ -15,7 +16,21 @@ namespace MedEquipment.Services
 
         public List<User> GetAllUsers()
         {
-            return _dbContext.Users.ToList();
+            return _dbContext.Users
+                .Include(x => x.Equipments)
+                .Include(x => x.RepairRequests)
+                .AsNoTracking()
+                .ToList();
+        }
+
+        public User GetUser(int id)
+        {
+            return _dbContext.Users
+                .Include(x => x.Equipments)
+                .Include(x => x.RepairRequests)
+                .Where(x => x.Id == id)
+                .AsNoTracking()
+                .SingleOrDefault();
         }
 
         public void AddUser(User user)
@@ -32,6 +47,12 @@ namespace MedEquipment.Services
             var user = _dbContext.Users.Where(x => x.Password == hashPassword && x.Login == hashLogin).SingleOrDefault();
 
             return user;
+        }
+
+        public void UpdateUser(User user)
+        {
+            _dbContext.Users.Update(user);
+            _dbContext.SaveChanges();
         }
     }
 }

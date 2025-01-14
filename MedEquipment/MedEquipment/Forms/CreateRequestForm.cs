@@ -1,4 +1,5 @@
-﻿using MedEquipment.Models;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using MedEquipment.Models;
 using MedEquipment.Services;
 using System.Data;
 
@@ -9,6 +10,7 @@ namespace MedEquipment.Forms
         private readonly EquipmentService _equipmentService;
         private readonly RepairRequestService _repairRequestService;
         private readonly User _user;
+        private string _equipmentId;
 
         public CreateRequestForm(User user)
         {
@@ -16,6 +18,15 @@ namespace MedEquipment.Forms
             _repairRequestService = new RepairRequestService();
             _equipmentService = new EquipmentService();
             _user = user;
+        }
+
+        public CreateRequestForm(User user, string equipmentId)
+        {
+            InitializeComponent();
+            _repairRequestService = new RepairRequestService();
+            _equipmentService = new EquipmentService();
+            _user = user;
+            _equipmentId = equipmentId;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -26,7 +37,10 @@ namespace MedEquipment.Forms
         private void CreateRequestForm_Load(object sender, EventArgs e)
         {
             var equipment = _equipmentService.GetAllUserEquipment(_user.Id);
+
             comboBox1.DataSource = equipment;
+            comboBox1.DisplayMember = nameof(Equipment.Name);
+            comboBox1.ValueMember = nameof(Equipment.Id);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,12 +52,15 @@ namespace MedEquipment.Forms
         {
             var repairRequest = new RepairRequest()
             {
-                EquipmentId = comboBox1.SelectedIndex,
+                EquipmentId = int.Parse(comboBox1.SelectedValue.ToString()),
                 UserId = _user.Id,
                 Description = textBox2.Text
             };
 
             _repairRequestService.AddRequest(repairRequest);
+
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

@@ -27,8 +27,8 @@ namespace MedEquipment.Forms
             var login = textBox1.Text;
             var password = textBox2.Text;
 
-            var user = _userService.VerifyUserLoginAndPassword(login, password);
-            user = new Models.User() { Role = Models.Role.Doctor };
+            var user = _userService.VerifyUserLoginAndPassword("chief1", "password3");
+            
             if (user != null)
             {
                 if (user.Role == Models.Role.Doctor)
@@ -38,12 +38,12 @@ namespace MedEquipment.Forms
                 }
                 else if (user.Role == Models.Role.SysAdmin)
                 {
-                    SysAdminForm sysAdmin = new SysAdminForm();
+                    SysAdminForm sysAdmin = new SysAdminForm(user);
                     sysAdmin.Show();
                 }
                 else if (user.Role == Models.Role.Chief)
                 {
-                    ChiefForm chiefForm = new ChiefForm();
+                    ChiefForm chiefForm = new ChiefForm(user);
                     chiefForm.Show();
                 }
                 this.Hide();

@@ -8,6 +8,7 @@
         public int? UserId { get; set; }
         public User? User { get; set; }
         public string Description { get; set; }
+        public DateOnly CreatedDate { get; set; }
         public RequestStatus Status { get; set; } = RequestStatus.Open;
     }
 }
