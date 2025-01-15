@@ -19,7 +19,7 @@ namespace MedEquipment.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connection = ConfigurationManager.ConnectionStrings["MyDbConnection"].ConnectionString;
-            optionsBuilder.UseNpgsql(connection);
+            optionsBuilder.UseSqlite(connection);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
