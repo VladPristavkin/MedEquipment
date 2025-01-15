@@ -188,5 +188,15 @@ namespace MedEquipment.Forms
             FillDataGrid();
             ClearSelectionDataGridViews();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RefreshInformation();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

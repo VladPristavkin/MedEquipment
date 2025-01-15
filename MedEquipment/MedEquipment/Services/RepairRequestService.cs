@@ -68,8 +68,6 @@ namespace MedEquipment.Services
                     var equipment = _dbContext.Equipment.FirstOrDefault(e => e.Id == request.EquipmentId);
 
                     equipment.EquipmentStatus = EquipmentStatus.Active;
-
-                    _dbContext.RepairRequests.Remove(request);
                 }
 
                 _dbContext.SaveChanges();

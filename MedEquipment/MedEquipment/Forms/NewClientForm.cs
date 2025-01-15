@@ -65,8 +65,8 @@ namespace MedEquipment.Forms
                     Id = user.Id,
                     FullName = textBox4.Text,
                     Department = textBox3.Text,
-                    Login = HashHelper.HashString(textBox1.Text),
-                    Password = HashHelper.HashString(textBox2.Text),
+                    Login = !string.IsNullOrEmpty(textBox1.Text) ? HashHelper.HashString(textBox1.Text) : user.Login,
+                    Password = !string.IsNullOrEmpty(textBox2.Text) ? HashHelper.HashString(textBox2.Text) : user.Password,
                     Role = Enum.Parse<Role>(comboBox1.Text)
                 };
 

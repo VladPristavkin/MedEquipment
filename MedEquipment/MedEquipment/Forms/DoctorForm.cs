@@ -190,5 +190,10 @@ namespace MedEquipment.Forms
             dataGridView2.MultiSelect = false;
             dataGridView2.ClearSelection();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            RefreshInformation();
+        }
     }
 }

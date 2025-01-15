@@ -32,17 +32,13 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DoctorForm));
             label1 = new Label();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridView1 = new DataGridView();
-            DataGridView1Name = new DataGridViewTextBoxColumn();
-            Model = new DataGridViewTextBoxColumn();
-            SerialNumber = new DataGridViewTextBoxColumn();
-            LastServiceDate = new DataGridViewTextBoxColumn();
-            statusDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             repairRequestBindingSource = new BindingSource(components);
             button1 = new Button();
             button2 = new Button();
@@ -50,12 +46,6 @@
             button3 = new Button();
             button4 = new Button();
             dataGridView2 = new DataGridView();
-            RepairName = new DataGridViewTextBoxColumn();
-            RepairModel = new DataGridViewTextBoxColumn();
-            RepairSerialNumber = new DataGridViewTextBoxColumn();
-            CreatedDate = new DataGridViewTextBoxColumn();
-            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            statusDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
@@ -65,6 +55,18 @@
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             button5 = new Button();
+            DataGridView1Name = new DataGridViewTextBoxColumn();
+            Model = new DataGridViewTextBoxColumn();
+            SerialNumber = new DataGridViewTextBoxColumn();
+            LastServiceDate = new DataGridViewTextBoxColumn();
+            statusDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            RepairName = new DataGridViewTextBoxColumn();
+            RepairModel = new DataGridViewTextBoxColumn();
+            RepairSerialNumber = new DataGridViewTextBoxColumn();
+            CreatedDate = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            statusDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repairRequestBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -129,32 +131,6 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(985, 169);
             dataGridView1.TabIndex = 1;
-            // 
-            // Name
-            // 
-            DataGridView1Name.HeaderText = "Name";
-            DataGridView1Name.Name = "Name";
-            // 
-            // Model
-            // 
-            Model.HeaderText = "Model";
-            Model.Name = "Model";
-            // 
-            // SerialNumber
-            // 
-            SerialNumber.HeaderText = "SerialNumber";
-            SerialNumber.Name = "SerialNumber";
-            // 
-            // LastServiceDate
-            // 
-            LastServiceDate.HeaderText = "LastServiceDate";
-            LastServiceDate.Name = "LastServiceDate";
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
             // 
             // repairRequestBindingSource
             // 
@@ -248,39 +224,6 @@
             dataGridView2.Size = new Size(981, 145);
             dataGridView2.TabIndex = 7;
             // 
-            // RepairName
-            // 
-            RepairName.HeaderText = "Name";
-            RepairName.Name = "RepairName";
-            // 
-            // RepairModel
-            // 
-            RepairModel.DataPropertyName = "Id";
-            RepairModel.HeaderText = "Model";
-            RepairModel.Name = "RepairModel";
-            // 
-            // RepairSerialNumber
-            // 
-            RepairSerialNumber.HeaderText = "SerialNumber";
-            RepairSerialNumber.Name = "RepairSerialNumber";
-            // 
-            // CreatedDate
-            // 
-            CreatedDate.HeaderText = "CreatedDate";
-            CreatedDate.Name = "CreatedDate";
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewTextBoxColumn1
-            // 
-            statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
-            statusDataGridViewTextBoxColumn1.HeaderText = "Status";
-            statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
-            // 
             // dataGridViewTextBoxColumn6
             // 
             dataGridViewTextBoxColumn6.DataPropertyName = "Status";
@@ -350,11 +293,85 @@
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
+            // DataGridView1Name
+            // 
+            DataGridView1Name.HeaderText = "Название";
+            DataGridView1Name.Name = "DataGridView1Name";
+            // 
+            // Model
+            // 
+            Model.HeaderText = "Модель";
+            Model.Name = "Model";
+            // 
+            // SerialNumber
+            // 
+            SerialNumber.HeaderText = "Серийный номер";
+            SerialNumber.Name = "SerialNumber";
+            // 
+            // LastServiceDate
+            // 
+            LastServiceDate.HeaderText = "Последнее обслуживание";
+            LastServiceDate.Name = "LastServiceDate";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            statusDataGridViewTextBoxColumn.HeaderText = "Статус";
+            statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // RepairName
+            // 
+            RepairName.HeaderText = "Название";
+            RepairName.Name = "RepairName";
+            // 
+            // RepairModel
+            // 
+            RepairModel.DataPropertyName = "Id";
+            RepairModel.HeaderText = "Модель";
+            RepairModel.Name = "RepairModel";
+            // 
+            // RepairSerialNumber
+            // 
+            RepairSerialNumber.HeaderText = "Серийный номер";
+            RepairSerialNumber.Name = "RepairSerialNumber";
+            // 
+            // CreatedDate
+            // 
+            CreatedDate.HeaderText = "Дата создания";
+            CreatedDate.Name = "CreatedDate";
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Описание";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn1
+            // 
+            statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
+            statusDataGridViewTextBoxColumn1.HeaderText = "Статус";
+            statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
+            // 
+            // button6
+            // 
+            button6.Anchor = AnchorStyles.Top;
+            button6.AutoSize = true;
+            button6.Font = new Font("Segoe UI", 12F);
+            button6.Location = new Point(1115, 30);
+            button6.Name = "button6";
+            button6.Size = new Size(118, 31);
+            button6.TabIndex = 25;
+            button6.Text = "Обновить";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
             // DoctorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1264, 681);
+            Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(label3);
             Controls.Add(dataGridView2);
@@ -398,6 +415,7 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
+        private Button button5;
         private DataGridViewTextBoxColumn DataGridView1Name;
         private DataGridViewTextBoxColumn Model;
         private DataGridViewTextBoxColumn SerialNumber;
@@ -409,6 +427,6 @@
         private DataGridViewTextBoxColumn CreatedDate;
         private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn1;
-        private Button button5;
+        private Button button6;
     }
 }

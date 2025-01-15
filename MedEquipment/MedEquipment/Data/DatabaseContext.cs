@@ -35,7 +35,7 @@ namespace MedEquipment.Data
             );
 
             modelBuilder.Entity<Equipment>().HasData(
-                new Equipment { Id = 1, Name = "УЗИ аппарат", Model = "GE Voluson", SerialNumber = "12345", LastServiceDate = new DateOnly(2023, 10, 1), EquipmentStatus = EquipmentStatus.Active, UserId = 1 },
+                new Equipment { Id = 1, Name = "УЗИ аппарат", Model = "GE Voluson", SerialNumber = "12345", LastServiceDate = new DateOnly(2023, 10, 1), EquipmentStatus = EquipmentStatus.Repaired, UserId = 1 },
                 new Equipment { Id = 2, Name = "Рентген аппарат", Model = "Philips", SerialNumber = "67890", LastServiceDate = new DateOnly(2023, 8, 15), EquipmentStatus = EquipmentStatus.Repaired, UserId = 3 }
             );
 

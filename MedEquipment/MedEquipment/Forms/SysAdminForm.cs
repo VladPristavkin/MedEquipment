@@ -195,5 +195,10 @@ namespace MedEquipment.Forms
                 MessageBox.Show(this, "Выберите оборудование", "Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            RefreshInformation();
+        }
     }
 }

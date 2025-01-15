@@ -31,6 +31,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChiefForm));
             label1 = new Label();
             label3 = new Label();
             dataGridView1 = new DataGridView();
@@ -57,6 +58,7 @@
             panel3 = new Panel();
             label8 = new Label();
             label9 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel1.SuspendLayout();
@@ -116,24 +118,24 @@
             dataGridView1.Size = new Size(985, 169);
             dataGridView1.TabIndex = 9;
             // 
-            // Name
+            // DataGridView1Name
             // 
-            DataGridView1Name.HeaderText = "Name";
-            DataGridView1Name.Name = "Name";
+            DataGridView1Name.HeaderText = "Полное имя";
+            DataGridView1Name.Name = "DataGridView1Name";
             // 
             // Department
             // 
-            Department.HeaderText = "Department";
+            Department.HeaderText = "Отделение";
             Department.Name = "Department";
             // 
             // JobTitle
             // 
-            JobTitle.HeaderText = "JobTitle";
+            JobTitle.HeaderText = "Должность";
             JobTitle.Name = "JobTitle";
             // 
             // Equipment
             // 
-            Equipment.HeaderText = "Equipment";
+            Equipment.HeaderText = "Оборудование";
             Equipment.Name = "Equipment";
             // 
             // button2
@@ -236,17 +238,17 @@
             // 
             // Dep
             // 
-            Dep.HeaderText = "Department";
+            Dep.HeaderText = "Отделение";
             Dep.Name = "Dep";
             // 
             // AmountOfEquipment
             // 
-            AmountOfEquipment.HeaderText = "AmountOfEquipment";
+            AmountOfEquipment.HeaderText = "Количество оборудования";
             AmountOfEquipment.Name = "AmountOfEquipment";
             // 
             // RepairsForTheMonth
             // 
-            RepairsForTheMonth.HeaderText = "RepairsForTheMonth";
+            RepairsForTheMonth.HeaderText = "Ремонтов за месяц";
             RepairsForTheMonth.Name = "RepairsForTheMonth";
             // 
             // panel1
@@ -268,6 +270,7 @@
             label5.TabIndex = 1;
             label5.Text = "{TotalEquipment}";
             label5.TextAlign = ContentAlignment.MiddleCenter;
+            label5.Click += label5_Click;
             // 
             // label4
             // 
@@ -339,11 +342,26 @@
             label9.TabIndex = 0;
             label9.Text = "Завершенные ремонты";
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top;
+            button1.AutoSize = true;
+            button1.Font = new Font("Segoe UI", 12F);
+            button1.Location = new Point(1116, 26);
+            button1.Name = "button1";
+            button1.Size = new Size(118, 31);
+            button1.TabIndex = 24;
+            button1.Text = "Обновить";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // ChiefForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1264, 681);
+            Controls.Add(button1);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
@@ -383,10 +401,6 @@
         private Button button6;
         private Button button7;
         private Button button8;
-        private DataGridViewTextBoxColumn DataGridView1Name;
-        private DataGridViewTextBoxColumn Department;
-        private DataGridViewTextBoxColumn JobTitle;
-        private DataGridViewTextBoxColumn Equipment;
         private DataGridView dataGridView2;
         private Panel panel1;
         private Label label5;
@@ -397,8 +411,13 @@
         private Panel panel3;
         private Label label8;
         private Label label9;
+        private DataGridViewTextBoxColumn DataGridView1Name;
+        private DataGridViewTextBoxColumn Department;
+        private DataGridViewTextBoxColumn JobTitle;
+        private DataGridViewTextBoxColumn Equipment;
         private DataGridViewTextBoxColumn Dep;
         private DataGridViewTextBoxColumn AmountOfEquipment;
         private DataGridViewTextBoxColumn RepairsForTheMonth;
+        private Button button1;
     }
 }

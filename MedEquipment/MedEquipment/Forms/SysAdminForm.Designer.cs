@@ -31,21 +31,11 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysAdminForm));
             label1 = new Label();
             label3 = new Label();
             dataGridView2 = new DataGridView();
-            RepairName = new DataGridViewTextBoxColumn();
-            RepairModel = new DataGridViewTextBoxColumn();
-            RepairSerialNumber = new DataGridViewTextBoxColumn();
-            AssignedTo = new DataGridViewTextBoxColumn();
-            EquipmentStatus = new DataGridViewTextBoxColumn();
             dataGridView1 = new DataGridView();
-            DataGridView1Name = new DataGridViewTextBoxColumn();
-            Model = new DataGridViewTextBoxColumn();
-            SerialNumber = new DataGridViewTextBoxColumn();
-            Applicant = new DataGridViewTextBoxColumn();
-            CreatedDate = new DataGridViewTextBoxColumn();
-            Status = new DataGridViewTextBoxColumn();
             button1 = new Button();
             label2 = new Label();
             button3 = new Button();
@@ -53,6 +43,18 @@
             button5 = new Button();
             button2 = new Button();
             button6 = new Button();
+            DataGridView1Name = new DataGridViewTextBoxColumn();
+            Model = new DataGridViewTextBoxColumn();
+            SerialNumber = new DataGridViewTextBoxColumn();
+            Applicant = new DataGridViewTextBoxColumn();
+            CreatedDate = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewTextBoxColumn();
+            RepairName = new DataGridViewTextBoxColumn();
+            RepairModel = new DataGridViewTextBoxColumn();
+            RepairSerialNumber = new DataGridViewTextBoxColumn();
+            AssignedTo = new DataGridViewTextBoxColumn();
+            EquipmentStatus = new DataGridViewTextBoxColumn();
+            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -101,32 +103,6 @@
             dataGridView2.Size = new Size(981, 145);
             dataGridView2.TabIndex = 15;
             // 
-            // RepairName
-            // 
-            RepairName.HeaderText = "Name";
-            RepairName.Name = "RepairName";
-            // 
-            // RepairModel
-            // 
-            RepairModel.DataPropertyName = "Id";
-            RepairModel.HeaderText = "Model";
-            RepairModel.Name = "RepairModel";
-            // 
-            // RepairSerialNumber
-            // 
-            RepairSerialNumber.HeaderText = "SerialNumber";
-            RepairSerialNumber.Name = "RepairSerialNumber";
-            // 
-            // AssignedTo
-            // 
-            AssignedTo.HeaderText = "AssignedTo";
-            AssignedTo.Name = "AssignedTo";
-            // 
-            // EquipmentStatus
-            // 
-            EquipmentStatus.HeaderText = "Status";
-            EquipmentStatus.Name = "EquipmentStatus";
-            // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
@@ -156,36 +132,6 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(985, 169);
             dataGridView1.TabIndex = 9;
-            // 
-            // Name
-            // 
-            DataGridView1Name.HeaderText = "Name";
-            DataGridView1Name.Name = "Name";
-            // 
-            // Model
-            // 
-            Model.HeaderText = "Model";
-            Model.Name = "Model";
-            // 
-            // SerialNumber
-            // 
-            SerialNumber.HeaderText = "SerialNumber";
-            SerialNumber.Name = "SerialNumber";
-            // 
-            // Applicant
-            // 
-            Applicant.HeaderText = "Applicant";
-            Applicant.Name = "Applicant";
-            // 
-            // CreatedDate
-            // 
-            CreatedDate.HeaderText = "CreatedDate";
-            CreatedDate.Name = "CreatedDate";
-            // 
-            // Status
-            // 
-            Status.HeaderText = "Status";
-            Status.Name = "Status";
             // 
             // button1
             // 
@@ -276,11 +222,82 @@
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
             // 
+            // DataGridView1Name
+            // 
+            DataGridView1Name.HeaderText = "Название";
+            DataGridView1Name.Name = "DataGridView1Name";
+            // 
+            // Model
+            // 
+            Model.HeaderText = "Модель";
+            Model.Name = "Model";
+            // 
+            // SerialNumber
+            // 
+            SerialNumber.HeaderText = "Серийный номер";
+            SerialNumber.Name = "SerialNumber";
+            // 
+            // Applicant
+            // 
+            Applicant.HeaderText = "Заявитель";
+            Applicant.Name = "Applicant";
+            // 
+            // CreatedDate
+            // 
+            CreatedDate.HeaderText = "Дата создания";
+            CreatedDate.Name = "CreatedDate";
+            // 
+            // Status
+            // 
+            Status.HeaderText = "Статус";
+            Status.Name = "Status";
+            // 
+            // RepairName
+            // 
+            RepairName.HeaderText = "Название";
+            RepairName.Name = "RepairName";
+            // 
+            // RepairModel
+            // 
+            RepairModel.DataPropertyName = "Id";
+            RepairModel.HeaderText = "Модель";
+            RepairModel.Name = "RepairModel";
+            // 
+            // RepairSerialNumber
+            // 
+            RepairSerialNumber.HeaderText = "Серийный номер";
+            RepairSerialNumber.Name = "RepairSerialNumber";
+            // 
+            // AssignedTo
+            // 
+            AssignedTo.HeaderText = "Закреплено за";
+            AssignedTo.Name = "AssignedTo";
+            // 
+            // EquipmentStatus
+            // 
+            EquipmentStatus.HeaderText = "Статус";
+            EquipmentStatus.Name = "EquipmentStatus";
+            // 
+            // button7
+            // 
+            button7.Anchor = AnchorStyles.Top;
+            button7.AutoSize = true;
+            button7.Font = new Font("Segoe UI", 12F);
+            button7.Location = new Point(1122, 27);
+            button7.Name = "button7";
+            button7.Size = new Size(118, 31);
+            button7.TabIndex = 26;
+            button7.Text = "Обновить";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
+            // 
             // SysAdminForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1264, 681);
+            Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(button2);
             Controls.Add(button5);
@@ -311,19 +328,20 @@
         private Label label2;
         private Button button3;
         private Button button4;
+        private Button button5;
+        private Button button2;
+        private Button button6;
+        private DataGridViewTextBoxColumn RepairName;
+        private DataGridViewTextBoxColumn RepairModel;
+        private DataGridViewTextBoxColumn RepairSerialNumber;
+        private DataGridViewTextBoxColumn AssignedTo;
+        private DataGridViewTextBoxColumn EquipmentStatus;
         private DataGridViewTextBoxColumn DataGridView1Name;
         private DataGridViewTextBoxColumn Model;
         private DataGridViewTextBoxColumn SerialNumber;
         private DataGridViewTextBoxColumn Applicant;
         private DataGridViewTextBoxColumn CreatedDate;
         private DataGridViewTextBoxColumn Status;
-        private DataGridViewTextBoxColumn RepairName;
-        private DataGridViewTextBoxColumn RepairModel;
-        private DataGridViewTextBoxColumn RepairSerialNumber;
-        private DataGridViewTextBoxColumn AssignedTo;
-        private DataGridViewTextBoxColumn EquipmentStatus;
-        private Button button5;
-        private Button button2;
-        private Button button6;
+        private Button button7;
     }
 }

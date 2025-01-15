@@ -27,8 +27,8 @@ namespace MedEquipment.Forms
             var login = textBox1.Text;
             var password = textBox2.Text;
 
-            var user = _userService.VerifyUserLoginAndPassword("chief1", "password3");
-            
+            var user = _userService.VerifyUserLoginAndPassword(login, password);
+
             if (user != null)
             {
                 if (user.Role == Models.Role.Doctor)
