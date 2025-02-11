@@ -48,21 +48,6 @@ namespace MedEquipment.Forms
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoginButton_Click(object sender, EventArgs e)
         {
             if (_equipment != null)
@@ -105,11 +90,6 @@ namespace MedEquipment.Forms
         {
             DialogResult = DialogResult.Cancel;
             Close();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

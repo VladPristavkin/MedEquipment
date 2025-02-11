@@ -36,6 +36,12 @@ namespace MedEquipment.Forms
         {
             if (_equipmentId != null)
             {
+                if(_equipmentService.GetEquipment(_equipmentId.Value).EquipmentStatus == EquipmentStatus.Repaired)
+                {
+                    MessageBox.Show(this, "Заявка на данное оборудование уже существует", "Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 RequestForm requestForm = new RequestForm(_equipmentId.Value);
                 requestForm.ShowDialog();
 
@@ -57,6 +63,13 @@ namespace MedEquipment.Forms
             ConfigureDataGridViews();
             RefreshInformation();
         }
+
+        private void DoctorForm_FormClosed(object sender, EventArgs e)
+        {
+            new LoginForm().Show();
+            Hide();
+        }
+
 
         private void button3_Click(object sender, EventArgs e)
         {

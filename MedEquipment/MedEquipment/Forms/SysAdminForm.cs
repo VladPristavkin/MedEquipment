@@ -38,6 +38,12 @@ namespace MedEquipment.Forms
             RefreshInformation();
         }
 
+        private void SysAdminForm_FormClosed(object sender, EventArgs e)
+        {
+            new LoginForm().Show();
+            Hide();
+        }
+
         private void RefreshInformation()
         {
             FillDataGrid();

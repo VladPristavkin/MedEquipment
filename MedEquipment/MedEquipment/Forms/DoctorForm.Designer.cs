@@ -385,6 +385,7 @@
             Name = "DoctorForm";
             Text = "DoctorForm";
             Load += DoctorForm_Load;
+            FormClosed += DoctorForm_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repairRequestBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();

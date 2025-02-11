@@ -270,7 +270,6 @@
             label5.TabIndex = 1;
             label5.Text = "{TotalEquipment}";
             label5.TextAlign = ContentAlignment.MiddleCenter;
-            label5.Click += label5_Click;
             // 
             // label4
             // 
@@ -378,6 +377,7 @@
             Name = "ChiefForm";
             Text = "ChiefForm";
             Load += ChiefForm_Load;
+            FormClosed += ChiefForm_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel1.ResumeLayout(false);

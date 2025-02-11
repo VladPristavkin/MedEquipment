@@ -129,6 +129,12 @@ namespace MedEquipment.Forms
             dataGridView2.ClearSelection();
         }
 
+        private void ChiefForm_FormClosed(object sender, EventArgs e)
+        {
+            new LoginForm().Show();
+            Hide();
+        }
+
         private void button8_Click(object sender, EventArgs e)
         {
             ExcelReport.CreateReport(dataGridView1, "Персонал");
@@ -192,11 +198,6 @@ namespace MedEquipment.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             RefreshInformation();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

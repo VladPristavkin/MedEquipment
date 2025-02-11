@@ -12,16 +12,6 @@ namespace MedEquipment.Forms
             _userService = new UserService();
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             var login = textBox1.Text;
@@ -46,30 +36,20 @@ namespace MedEquipment.Forms
                     ChiefForm chiefForm = new ChiefForm(user);
                     chiefForm.Show();
                 }
-                this.Hide();
+                Hide();
             }
             else
             {
-                MessageBox.Show(this, "Этот пользователь не зарегистрирован", "Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "Пользователь не найден. Проверьте логин и пароль. \nЕсли забыли, обратитесь к главе отделения.", "Title", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void LoginForm_FormClosed(object sender, EventArgs e)
         {
-
+            Environment.Exit(0);
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
 
         }

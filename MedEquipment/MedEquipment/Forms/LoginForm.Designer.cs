@@ -47,7 +47,6 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(230, 23);
             textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // LoginButton
             // 
@@ -69,7 +68,6 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(230, 23);
             textBox2.TabIndex = 2;
-            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label1
             // 
@@ -82,7 +80,6 @@
             label1.TabIndex = 3;
             label1.Text = "Добро пожаловать!\r\nВведите логин и пароль. \r\n";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -95,7 +92,6 @@
             label2.TabIndex = 4;
             label2.Text = "Логин";
             label2.TextAlign = ContentAlignment.MiddleCenter;
-            label2.Click += label2_Click;
             // 
             // label3
             // 
@@ -108,7 +104,6 @@
             label3.TabIndex = 5;
             label3.Text = "Пароль";
             label3.TextAlign = ContentAlignment.MiddleCenter;
-            label3.Click += label3_Click;
             // 
             // LoginForm
             // 
@@ -124,6 +119,7 @@
             Controls.Add(textBox1);
             Name = "LoginForm";
             Text = "LoginForm";
+            FormClosed += LoginForm_FormClosed;
             Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();

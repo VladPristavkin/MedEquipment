@@ -89,10 +89,5 @@ namespace MedEquipment.Forms
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
-        private void NewClientForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

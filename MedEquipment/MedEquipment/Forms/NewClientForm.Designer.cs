@@ -205,7 +205,6 @@
             Controls.Add(textBox1);
             Name = "NewClientForm";
             Text = "NewClientForm";
-            Load += NewClientForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }

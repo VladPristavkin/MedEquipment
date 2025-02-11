@@ -108,7 +108,6 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(230, 23);
             textBox1.TabIndex = 6;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
@@ -141,7 +140,6 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(230, 23);
             textBox4.TabIndex = 12;
-            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // dateTimePicker1
             // 
@@ -150,7 +148,6 @@
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(230, 23);
             dateTimePicker1.TabIndex = 16;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // button1
             // 
@@ -184,7 +181,6 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(230, 23);
             comboBox1.TabIndex = 20;
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // EquipmentForm
             // 

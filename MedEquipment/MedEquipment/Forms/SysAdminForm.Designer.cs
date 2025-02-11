@@ -312,6 +312,7 @@
             Name = "SysAdminForm";
             Text = "SysAdminForm";
             Load += SysAdminForm_Load;
+            FormClosed += SysAdminForm_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
