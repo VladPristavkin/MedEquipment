@@ -35,6 +35,11 @@
             label1 = new Label();
             label3 = new Label();
             dataGridView2 = new DataGridView();
+            RepairName = new DataGridViewTextBoxColumn();
+            RepairModel = new DataGridViewTextBoxColumn();
+            RepairSerialNumber = new DataGridViewTextBoxColumn();
+            AssignedTo = new DataGridViewTextBoxColumn();
+            EquipmentStatus = new DataGridViewTextBoxColumn();
             dataGridView1 = new DataGridView();
             button1 = new Button();
             label2 = new Label();
@@ -43,18 +48,14 @@
             button5 = new Button();
             button2 = new Button();
             button6 = new Button();
+            button7 = new Button();
             DataGridView1Name = new DataGridViewTextBoxColumn();
             Model = new DataGridViewTextBoxColumn();
             SerialNumber = new DataGridViewTextBoxColumn();
             Applicant = new DataGridViewTextBoxColumn();
             CreatedDate = new DataGridViewTextBoxColumn();
+            Description = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
-            RepairName = new DataGridViewTextBoxColumn();
-            RepairModel = new DataGridViewTextBoxColumn();
-            RepairSerialNumber = new DataGridViewTextBoxColumn();
-            AssignedTo = new DataGridViewTextBoxColumn();
-            EquipmentStatus = new DataGridViewTextBoxColumn();
-            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -100,8 +101,34 @@
             dataGridView2.Location = new Point(174, 421);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersVisible = false;
-            dataGridView2.Size = new Size(981, 145);
+            dataGridView2.Size = new Size(1003, 145);
             dataGridView2.TabIndex = 15;
+            // 
+            // RepairName
+            // 
+            RepairName.HeaderText = "Название";
+            RepairName.Name = "RepairName";
+            // 
+            // RepairModel
+            // 
+            RepairModel.DataPropertyName = "Id";
+            RepairModel.HeaderText = "Модель";
+            RepairModel.Name = "RepairModel";
+            // 
+            // RepairSerialNumber
+            // 
+            RepairSerialNumber.HeaderText = "Серийный номер";
+            RepairSerialNumber.Name = "RepairSerialNumber";
+            // 
+            // AssignedTo
+            // 
+            AssignedTo.HeaderText = "Закреплено за";
+            AssignedTo.Name = "AssignedTo";
+            // 
+            // EquipmentStatus
+            // 
+            EquipmentStatus.HeaderText = "Статус";
+            EquipmentStatus.Name = "EquipmentStatus";
             // 
             // dataGridView1
             // 
@@ -118,8 +145,8 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DataGridView1Name, Model, SerialNumber, Applicant, CreatedDate, Status });
-            dataGridView1.Location = new Point(170, 150);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { DataGridView1Name, Model, SerialNumber, Applicant, CreatedDate, Description, Status });
+            dataGridView1.Location = new Point(174, 150);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -130,8 +157,9 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.Size = new Size(985, 169);
+            dataGridView1.Size = new Size(1003, 169);
             dataGridView1.TabIndex = 9;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // button1
             // 
@@ -201,7 +229,7 @@
             button2.Anchor = AnchorStyles.Top;
             button2.AutoSize = true;
             button2.Font = new Font("Segoe UI", 12F);
-            button2.Location = new Point(1037, 325);
+            button2.Location = new Point(1059, 325);
             button2.Name = "button2";
             button2.Size = new Size(118, 31);
             button2.TabIndex = 18;
@@ -214,13 +242,26 @@
             button6.Anchor = AnchorStyles.Top;
             button6.AutoSize = true;
             button6.Font = new Font("Segoe UI", 12F);
-            button6.Location = new Point(1037, 572);
+            button6.Location = new Point(1059, 572);
             button6.Name = "button6";
             button6.Size = new Size(118, 31);
             button6.TabIndex = 19;
             button6.Text = "Отчет";
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
+            // 
+            // button7
+            // 
+            button7.Anchor = AnchorStyles.Top;
+            button7.AutoSize = true;
+            button7.Font = new Font("Segoe UI", 12F);
+            button7.Location = new Point(1122, 27);
+            button7.Name = "button7";
+            button7.Size = new Size(118, 31);
+            button7.TabIndex = 26;
+            button7.Text = "Обновить";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // DataGridView1Name
             // 
@@ -247,49 +288,15 @@
             CreatedDate.HeaderText = "Дата создания";
             CreatedDate.Name = "CreatedDate";
             // 
+            // Description
+            // 
+            Description.HeaderText = "Описание";
+            Description.Name = "Description";
+            // 
             // Status
             // 
             Status.HeaderText = "Статус";
             Status.Name = "Status";
-            // 
-            // RepairName
-            // 
-            RepairName.HeaderText = "Название";
-            RepairName.Name = "RepairName";
-            // 
-            // RepairModel
-            // 
-            RepairModel.DataPropertyName = "Id";
-            RepairModel.HeaderText = "Модель";
-            RepairModel.Name = "RepairModel";
-            // 
-            // RepairSerialNumber
-            // 
-            RepairSerialNumber.HeaderText = "Серийный номер";
-            RepairSerialNumber.Name = "RepairSerialNumber";
-            // 
-            // AssignedTo
-            // 
-            AssignedTo.HeaderText = "Закреплено за";
-            AssignedTo.Name = "AssignedTo";
-            // 
-            // EquipmentStatus
-            // 
-            EquipmentStatus.HeaderText = "Статус";
-            EquipmentStatus.Name = "EquipmentStatus";
-            // 
-            // button7
-            // 
-            button7.Anchor = AnchorStyles.Top;
-            button7.AutoSize = true;
-            button7.Font = new Font("Segoe UI", 12F);
-            button7.Location = new Point(1122, 27);
-            button7.Name = "button7";
-            button7.Size = new Size(118, 31);
-            button7.TabIndex = 26;
-            button7.Text = "Обновить";
-            button7.UseVisualStyleBackColor = true;
-            button7.Click += button7_Click;
             // 
             // SysAdminForm
             // 
@@ -311,8 +318,8 @@
             Controls.Add(label1);
             Name = "SysAdminForm";
             Text = "SysAdminForm";
-            Load += SysAdminForm_Load;
             FormClosed += SysAdminForm_FormClosed;
+            Load += SysAdminForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -337,12 +344,13 @@
         private DataGridViewTextBoxColumn RepairSerialNumber;
         private DataGridViewTextBoxColumn AssignedTo;
         private DataGridViewTextBoxColumn EquipmentStatus;
+        private Button button7;
         private DataGridViewTextBoxColumn DataGridView1Name;
         private DataGridViewTextBoxColumn Model;
         private DataGridViewTextBoxColumn SerialNumber;
         private DataGridViewTextBoxColumn Applicant;
         private DataGridViewTextBoxColumn CreatedDate;
+        private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn Status;
-        private Button button7;
     }
 }

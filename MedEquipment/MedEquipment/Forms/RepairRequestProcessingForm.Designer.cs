@@ -39,6 +39,7 @@
             comboBox1 = new ComboBox();
             button2 = new Button();
             button1 = new Button();
+            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -51,6 +52,7 @@
             label1.Size = new Size(265, 25);
             label1.TabIndex = 2;
             label1.Text = "Обработка заявки на ремонт";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -112,7 +114,7 @@
             label7.Anchor = AnchorStyles.Top;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F);
-            label7.Location = new Point(865, 155);
+            label7.Location = new Point(915, 155);
             label7.Name = "label7";
             label7.Size = new Size(122, 21);
             label7.TabIndex = 8;
@@ -121,7 +123,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(866, 190);
+            comboBox1.Location = new Point(916, 190);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
             comboBox1.TabIndex = 9;
@@ -131,7 +133,7 @@
             button2.Anchor = AnchorStyles.Top;
             button2.AutoSize = true;
             button2.Font = new Font("Segoe UI", 12F);
-            button2.Location = new Point(690, 382);
+            button2.Location = new Point(850, 522);
             button2.Name = "button2";
             button2.Size = new Size(75, 31);
             button2.TabIndex = 11;
@@ -144,7 +146,7 @@
             button1.Anchor = AnchorStyles.Top;
             button1.AutoSize = true;
             button1.Font = new Font("Segoe UI", 12F);
-            button1.Location = new Point(379, 382);
+            button1.Location = new Point(264, 522);
             button1.Name = "button1";
             button1.Size = new Size(147, 31);
             button1.TabIndex = 10;
@@ -152,12 +154,26 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("Segoe UI", 12F);
+            textBox1.Location = new Point(394, 253);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.ScrollBars = ScrollBars.Vertical;
+            textBox1.Size = new Size(465, 230);
+            textBox1.TabIndex = 13;
+            textBox1.Text = "                                               Описание:\r\n{}";
+            textBox1.TextChanged += textBox1_TextChanged;
+            // 
             // RepairRequestProcessingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1264, 681);
+            Controls.Add(textBox1);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(comboBox1);
@@ -186,5 +202,6 @@
         private ComboBox comboBox1;
         private Button button2;
         private Button button1;
+        private TextBox textBox1;
     }
 }

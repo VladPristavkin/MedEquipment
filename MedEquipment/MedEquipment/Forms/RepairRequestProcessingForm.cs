@@ -18,6 +18,7 @@ namespace MedEquipment.Forms
             label4.Text = label4.Text.Replace("{}", request.User.FullName);
             label5.Text = label5.Text.Replace("{}", request.User.Department);
             label6.Text = label6.Text.Replace("{}", request.CreatedDate.ToShortDateString());
+            textBox1.Text = textBox1.Text.Replace("{}", request.Description);
 
             comboBox1.DataSource = Enum.GetValues(typeof(RequestStatus))
              .Cast<RequestStatus>()
@@ -42,6 +43,21 @@ namespace MedEquipment.Forms
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

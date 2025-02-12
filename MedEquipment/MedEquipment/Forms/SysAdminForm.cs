@@ -71,7 +71,7 @@ namespace MedEquipment.Forms
             {
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(dataGridView1, request.Equipment.Name, request.Equipment.Model, request.Equipment.SerialNumber,
-                    request.User.FullName, request.CreatedDate.ToShortDateString(), request.Status.ToString(), request.Id);
+                    request.User.FullName, request.CreatedDate.ToShortDateString(), request.Description, request.Status.ToString(), request.Id);
                 row.Tag = request;
                 dataGridView1.Rows.Add(row);
             };
@@ -205,6 +205,11 @@ namespace MedEquipment.Forms
         private void button7_Click(object sender, EventArgs e)
         {
             RefreshInformation();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
